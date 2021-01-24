@@ -17,7 +17,11 @@
     "prettier": "^2.2.1"
   },
   "scripts": {
-    "prettier:all": "yarn prettier --write ."
+    "prettier:all": "yarn prettier --write .",
+    "build:admin": "yarn workspace @talves/use-previous build:lib",
+    "build:all": "yarn build:previous",
+    "build": "yarn build:all",
+    "release": "yarn changeset publish"
   },
   "browserslist": [
     "last 2 Chrome versions",
