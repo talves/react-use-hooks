@@ -8,7 +8,11 @@
   ],
   "author": "talves <tony@3alves.com> (@talves)",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "@changesets/cli": "^2.13.1"
+  },
+  "devDependencies": {
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1"
   }
 }
