@@ -1,0 +1,11 @@
+{
+  "name": "react-use-hooks",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "packages/@talves/*",
+    "www/*"
+  ],
+  "author": "talves <tony@3alves.com> (@talves)",
+  "license": "MIT"
+}
