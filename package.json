@@ -18,7 +18,7 @@
   },
   "scripts": {
     "prettier:all": "yarn prettier --write .",
-    "build:admin": "yarn workspace @talves/use-previous build:lib",
+    "build:previous": "yarn workspace @talves/use-previous build:lib",
     "build:all": "yarn build:previous",
     "build": "yarn build:all",
     "release": "yarn changeset publish"
