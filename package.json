@@ -12,10 +12,28 @@
     "@changesets/cli": "^2.13.1"
   },
   "devDependencies": {
+    "husky": "^4.3.8",
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1"
   },
   "scripts": {
     "prettier:all": "yarn prettier --write ."
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Opera versions",
+    "last 2 Firefox versions",
+    "last 2 Edge versions",
+    "last 2 Safari versions",
+    "last 2 iOS versions",
+    "last 2 ChromeAndroid versions"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
   }
 }
