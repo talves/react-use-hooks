@@ -1,6 +1,6 @@
 {
   "name": "@talves/use-previous",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
   "author": "talves <tony@3alves.com> (@talves)",
