@@ -42,3 +42,6 @@ function ourFunctionalComponent({ value = 0 }) {
 ## Other Solutions
 
 Plenty of other usePrevious hooks out there.
+
+[npm]: https://www.npmjs.com/
+[node]: https://nodejs.org/
