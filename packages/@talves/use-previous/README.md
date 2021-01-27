@@ -24,7 +24,7 @@ yarn add @talves/use-previous
 
 ```js
 /* using react ^17.0.1 */
-import usePrevious from '@talves/use-previous'
+import { usePrevious } from '@talves/use-previous'
 
 function ourFunctionalComponent({ value = 0 }) {
   const [state, setState] = React.useState({ count: value })
