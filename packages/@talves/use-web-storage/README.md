@@ -18,13 +18,13 @@ This module is distributed via [npm][npm] which is bundled with [node][node] and
 should be installed as one of your project's `dependencies`:
 
 ```
-npm install --save @talves/use-previous
+npm install --save @talves/use-web-storage
 ```
 
 OR
 
 ```
-yarn add @talves/use-previous
+yarn add @talves/use-web-storage
 ```
 
 ## Usage
