@@ -1,0 +1,49 @@
+{
+  "name": "site",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "private": true,
+  "author": "Tony Alves (@talves)",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf ./.tmp && rm -rf ./public",
+    "start": "NODE_ENV=production yarn gulp",
+    "postinstall": "breadbox --dest public/web_modules",
+    "build": "yarn build:css && yarn build:site",
+    "build:css": "postcss --config legacy-commonjs index.css -o public/styles.css --env production",
+    "build:site": "toast incremental ."
+  },
+  "dependencies": {
+    "@mdx-js/preact": "^1.6.22",
+    "@sector/breadbox": "^0.0.4",
+    "@toastdotdev/mdx": "^0.1.5",
+    "postcss": "^8.2.4",
+    "postcss-cli": "^8.3.1",
+    "preact": "^10.5.12",
+    "tailwindcss": "^2.0.2",
+    "toast": "^0.3.41"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.13",
+    "execa": "^4.1.0",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0"
+  },
+  "snowpack": {
+    "exclude": [
+      "gulpfile.js",
+      "public/**/*",
+      "toast.js"
+    ],
+    "installOptions": {
+      "alias": {
+        "react": "preact/compat"
+      }
+    },
+    "knownEntrypoints": [
+      "preact/hooks",
+      "preact"
+    ]
+  }
+}
