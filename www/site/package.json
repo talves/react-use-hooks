@@ -18,6 +18,7 @@
     "@mdx-js/preact": "^1.6.22",
     "@sector/breadbox": "^0.0.4",
     "@toastdotdev/mdx": "^0.1.5",
+    "autoprefixer": "10.2.3",
     "postcss": "^8.2.4",
     "postcss-cli": "^8.3.1",
     "preact": "^10.5.12",
