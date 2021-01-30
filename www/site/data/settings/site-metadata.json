@@ -1,0 +1,13 @@
+{
+  "twitterUsername": "@3_alves",
+  "author": "Tony Alves",
+  "url": "https://tony.alves.dev",
+  "titleTemplate": "%s | Tony Alves",
+  "organization": "talves",
+  "owner": "Tony Alves",
+  "facebookAppID": "facebookID",
+  "title": "Use Hooks",
+  "image": "/images/icon-logo.png",
+  "description": "Description placeholder",
+  "twitterCardType": "summary_large_image"
+}

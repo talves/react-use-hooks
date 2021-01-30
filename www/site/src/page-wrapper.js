@@ -1,7 +1,7 @@
 import { h } from "preact";
-import { Helmet } from "react-helmet";
 import { MDXProvider } from "@mdx-js/preact";
 import { SiteDataProvider } from "./site-data-provider.js";
+import Layout from "./components/Layout/index.js";
 
 const components = {
   codeblock: (props) => (
@@ -16,12 +16,7 @@ export default function PageWrapper(props) {
   return (
     <SiteDataProvider url="/settings.json">
       <MDXProvider components={components}>
-        <div>
-          <Helmet>
-            <link rel="stylesheet" href="/styles.css" />
-          </Helmet>
-          {props.children}
-        </div>
+        <Layout header="Use Hooks (talves)">{props.children}</Layout>
       </MDXProvider>
     </SiteDataProvider>
   );
