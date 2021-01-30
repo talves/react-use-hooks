@@ -26,7 +26,7 @@ async function css() {
     [
       "--config",
       "legacy-commonjs",
-      "index.css",
+      "src/index.css",
       "-o",
       "public/styles.css",
       "--env",
