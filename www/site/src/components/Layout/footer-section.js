@@ -28,7 +28,7 @@ const SocialLink = ({
 
 const FooterSection = (props) => {
   const data = useSiteData();
-  const { footer = {}, siteMetadata = {} } = data;
+  const { footer = {}, ["site-metadata"]: siteMetadata = {} } = data;
 
   return (
     <Box>
@@ -47,7 +47,7 @@ const FooterSection = (props) => {
           <GitHubIcon className="fill-current text-primary-100 inline-block h-10 w-10" />
         </SocialLink>
         <Box className="my-auto p-4 text-primary-800 font-bold inline-block">
-          © {footer.copyright}
+          © {siteMetadata.owner}
         </Box>
       </Box>
     </Box>

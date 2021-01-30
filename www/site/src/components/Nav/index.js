@@ -17,7 +17,6 @@ const Navigation = (props) => {
           data.menu.items
             .filter((k) => !k.hidden)
             .map((item, index) => {
-              console.log(item, index);
               return (
                 <NavItem key={index} href={item.path}>
                   {item.label}
