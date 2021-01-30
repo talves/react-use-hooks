@@ -50,7 +50,7 @@ function watchAll(cb) {
   });
   watch("src/**/*.css", css);
   watch(
-    ["src/**/*.js", "src/**/*.mdx", "content/**/*.mdx"],
+    ["src/**/*.js", "src/**/*.mdx", "content/**/*.mdx", "data/**/*.json"],
     series(clean, css, toast)
   );
   cb();

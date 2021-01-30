@@ -9,14 +9,14 @@
     },
     {
       "path": "/data",
-      "hidden": true,
+      "hidden": false,
       "label": "Data",
       "type": "route",
       "heading": "default"
     },
     {
       "path": "/about",
-      "hidden": false,
+      "hidden": true,
       "label": "About",
       "type": "page",
       "heading": "default"
