@@ -15,10 +15,10 @@
       "heading": "default"
     },
     {
-      "label": "About",
-      "hidden": false,
-      "type": "page",
       "path": "/about",
+      "hidden": false,
+      "label": "About",
+      "type": "page",
       "heading": "default"
     }
   ]

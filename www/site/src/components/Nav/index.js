@@ -6,7 +6,7 @@ import Nav from "./Nav.js";
 import NavItem from "./NavItem.js";
 
 const Navigation = (props) => {
-  const data = useSiteData();
+  const { navigation: data = {} } = useSiteData();
 
   return (
     <Box className={`divide-y divide-gray-100 ${props.class}`}>
@@ -17,6 +17,7 @@ const Navigation = (props) => {
           data.menu.items
             .filter((k) => !k.hidden)
             .map((item, index) => {
+              console.log(item, index);
               return (
                 <NavItem key={index} href={item.path}>
                   {item.label}
