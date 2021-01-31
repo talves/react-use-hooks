@@ -24,13 +24,14 @@ yarn add @talves/use-previous
 
 ```js
 /* using react ^17.0.1 */
+import { useEffect } form 'react'
 import { usePrevious } from '@talves/use-previous'
 
 function ourFunctionalComponent({ value = 0 }) {
   const [state, setState] = React.useState({ count: value })
   const previousValue = usePrevious(value)
 
-  React.useEffect(() => {
+  useEffect(() => {
     setState({ count: value })
   }, [value])
 
@@ -38,6 +39,8 @@ function ourFunctionalComponent({ value = 0 }) {
   ...
 }
 ```
+
+NOTE: This is a `module` package library for react with jsx. The choice is to resolve the export of main to `src/index.js`. There is a commonjs version in `dist/cjs/index.js` if someone needed.
 
 ## Other Solutions
 
