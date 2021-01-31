@@ -1,5 +1,11 @@
 # @talves/use-previous
 
+## 0.5.1
+
+### Patch Changes
+
+- 2c26cb5: make type module and use src/index.js
+
 ## 0.5.0
 
 ### Minor Changes
