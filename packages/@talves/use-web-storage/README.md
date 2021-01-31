@@ -31,6 +31,8 @@ yarn add @talves/use-web-storage
 
 TODO: Write usage example or see site code
 
+NOTE: This is a `module` package library for react with jsx. The choice is to resolve the export of main to `src/index.js`. There is a commonjs version in `dist/cjs/index.js` if someone needed.
+
 [reference]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
 [mdn-example]: https://github.com/mdn/dom-examples/tree/master/web-storage
 [npm]: https://www.npmjs.com/

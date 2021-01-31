@@ -41,6 +41,7 @@ const useWebStorage = (
   options = { type: "localStorage" }
 ) => {
   /* options are optional, so default to 'localStorage' */
+  const { type } = options;
   const hasStorage = storageAvailable(type);
   const [storage, setStorage] = useState(hasStorage ? window[type] : null);
 

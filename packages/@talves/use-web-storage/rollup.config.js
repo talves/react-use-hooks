@@ -18,7 +18,7 @@ const getOutput = (dirBase = "dist") => {
   return [
     {
       // file: packageJson.main,
-      dir: `${dirBase}`,
+      dir: `${dirBase}/cjs`,
       format: "cjs",
     },
     {
