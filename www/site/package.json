@@ -11,12 +11,13 @@
     "start": "NODE_ENV=production yarn gulp",
     "postinstall": "breadbox --dest public/web_modules",
     "build": "yarn build:css && yarn build:site",
-    "build:css": "postcss --config legacy-commonjs index.css -o public/styles.css --env production",
+    "build:css": "postcss --config legacy-commonjs src/index.css -o public/styles.css --env production",
     "build:site": "toast incremental ."
   },
   "dependencies": {
     "@mdx-js/preact": "^1.6.22",
     "@sector/breadbox": "^0.0.4",
+    "@talves/use-web-storage": "^0.1.1",
     "@toastdotdev/mdx": "^0.1.5",
     "autoprefixer": "10.2.3",
     "postcss": "^8.2.4",

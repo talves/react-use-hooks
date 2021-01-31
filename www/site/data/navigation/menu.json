@@ -15,6 +15,13 @@
       "heading": "default"
     },
     {
+      "path": "/web-storage",
+      "hidden": false,
+      "label": "useWebStorage",
+      "type": "route",
+      "heading": "default"
+    },
+    {
       "path": "/about",
       "hidden": true,
       "label": "About",
