@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 
-function storageAvailable(type) {
+function storageAvailable(storageType) {
   if (typeof window === "undefined") return false;
   /* types: ["sessionStorage ", "localStorage "] */
   const types = ["sessionStorage", "localStorage"];
-  if (!types.includes(type)) return false;
+  if (!types.includes(storageType)) return false;
   /* Taken from Mozilla example. See readme for ref */
   let webStorage;
   try {
-    webStorage = window[type];
+    webStorage = window[storageType];
     const x = "__storage_test__";
     webStorage.setItem(x, x);
     webStorage.removeItem(x);
@@ -41,16 +41,18 @@ const useWebStorage = (
   options = { type: "localStorage" }
 ) => {
   /* options are optional, so default to 'localStorage' */
-  const { type } = options;
-  const hasStorage = storageAvailable(type);
-  const [webStorage, setStorage] = useState(hasStorage ? window[type] : null);
+  const [storageType, setStorageType] = useState(options.type);
+  const hasStorage = storageAvailable(storageType);
+  const [webStorage, setWebStorage] = useState(
+    hasStorage ? window[storageType] : null
+  );
 
   const [storedValue, setStoredValue] = useState(() => {
     if (!hasStorage) return initialValue;
     try {
       let storedItem = webStorage.getItem(key);
       // console.log(
-      //   `Checking for stored value from ${type} [${key}]:`,
+      //   `Checking for stored value from ${storageType} [${key}]:`,
       //   storedItem
       // );
       /* Set the initial value in webStorage if it wasn't set prior */
@@ -77,6 +79,10 @@ const useWebStorage = (
     }
   };
 
+  const setType = (newType) => {
+    if (newType !== storageType) setStorageType(newType);
+  };
+
   useEffect(() => {
     if (!hasStorage) return;
     function handleStorageEvent(event) {
@@ -91,7 +97,18 @@ const useWebStorage = (
     return () => window.removeEventListener("storage", handleStorageEvent);
   }, []);
 
-  return [storedValue, setValue];
+  useEffect(() => {
+    if (!hasStorage || !webStorage || !key) return;
+    setWebStorage(window[storageType]);
+    let value = webStorage.getItem(key);
+    if (value === null && initialValue) {
+      value === initialValue;
+      webStorage.setItem(key, JSON.stringify(value));
+    }
+    setStoredValue(JSON.parse(value));
+  }, [storageType, webStorage, key, initialValue]);
+
+  return [storedValue, setValue, setType];
 };
 
 export { useWebStorage, hasLocalStorage, hasSessionStorage };
