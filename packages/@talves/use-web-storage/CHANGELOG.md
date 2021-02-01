@@ -1,5 +1,11 @@
 # @talves/use-web-storage
 
+## 0.3.0
+
+### Minor Changes
+
+- 18b13e3: Add setType function
+
 ## 0.2.0
 
 ### Minor Changes
