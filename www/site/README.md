@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/004761f3-6c0f-449b-8da1-e18b325b51f7/deploy-status)](https://app.netlify.com/sites/react-use-hooks/deploys)
+
 # Welcome to your new [Toast][toast] site!
 
 ## Get this template
