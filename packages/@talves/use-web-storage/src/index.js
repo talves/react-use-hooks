@@ -99,14 +99,18 @@ const useWebStorage = (
 
   useEffect(() => {
     if (!hasStorage || !webStorage || !key) return;
-    setWebStorage(window[storageType]);
     let value = webStorage.getItem(key);
     if (value === null && initialValue) {
       value === initialValue;
       webStorage.setItem(key, JSON.stringify(value));
     }
     setStoredValue(JSON.parse(value));
-  }, [storageType, webStorage, key, initialValue]);
+  }, [webStorage, key, initialValue]);
+
+  useEffect(() => {
+    if (!storageType) return;
+    setWebStorage(window[storageType]);
+  }, [storageType]);
 
   return [storedValue, setValue, setType];
 };
