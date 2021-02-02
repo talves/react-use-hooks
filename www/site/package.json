@@ -27,6 +27,7 @@
     "toast": "^0.3.41"
   },
   "devDependencies": {
+    "@tailwindcss/custom-forms": "^0.2.1",
     "browser-sync": "^2.26.13",
     "execa": "^4.1.0",
     "gulp": "^4.0.2",
