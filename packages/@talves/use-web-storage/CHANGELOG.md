@@ -1,5 +1,11 @@
 # @talves/use-web-storage
 
+## 0.4.0
+
+### Minor Changes
+
+- 5d3e357: storage type changes using setType
+
 ## 0.3.0
 
 ### Minor Changes
