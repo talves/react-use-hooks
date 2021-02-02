@@ -18,8 +18,10 @@
   },
   "scripts": {
     "prettier:all": "yarn prettier --write .",
+    "build:site": "yarn workspace site build",
     "build:previous": "yarn workspace @talves/use-previous build:lib",
-    "build:all": "yarn build:previous",
+    "build:web-storage": "yarn workspace @talves/use-web-storage build:lib",
+    "build:all": "yarn build:previous && yarn build:web-storage",
     "build": "yarn build:all",
     "release": "yarn changeset publish"
   },
