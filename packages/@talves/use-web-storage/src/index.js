@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+
+const WebStorageTypes = ["sessionStorage", "localStorage"];
 
 function storageAvailable(storageType) {
   if (typeof window === "undefined") return false;
-  /* types: ["sessionStorage ", "localStorage "] */
-  const types = ["sessionStorage", "localStorage"];
-  if (!types.includes(storageType)) return false;
+  if (!WebStorageTypes.includes(storageType)) return false;
   /* Taken from Mozilla example. See readme for ref */
   let webStorage;
   try {
@@ -42,13 +42,11 @@ const useWebStorage = (
 ) => {
   /* options are optional, so default to 'localStorage' */
   const [storageType, setStorageType] = useState(options.type);
-  const hasStorage = storageAvailable(storageType);
-  const [webStorage, setWebStorage] = useState(
-    hasStorage ? window[storageType] : null
-  );
+  const [hasStorage, setHasStorage] = useState(storageAvailable(storageType));
 
-  const [storedValue, setStoredValue] = useState(() => {
+  const getValue = useCallback(() => {
     if (!hasStorage) return initialValue;
+    const webStorage = window[storageType];
     try {
       let storedItem = webStorage.getItem(key);
       // console.log(
@@ -65,24 +63,34 @@ const useWebStorage = (
       console.error(error);
       return initialValue;
     }
-  });
+  }, [key, initialValue, hasStorage, storageType]);
+
+  const [storedValue, setStoredValue] = useState(getValue);
 
   /* value can be string || Function */
-  const setValue = (value) => {
-    try {
-      const valueToStore =
-        typeof value === "function" ? value(storedValue) : value;
-      setStoredValue(valueToStore);
-      webStorage.setItem(key, JSON.stringify(valueToStore));
-    } catch (error) {
-      console.error(error);
+  const setValue = useCallback(
+    (value) => {
+      try {
+        const webStorage = window[storageType];
+        const valueToStore =
+          typeof value === "function" ? value(storedValue) : value;
+        setStoredValue(valueToStore);
+        if (hasStorage) webStorage.setItem(key, JSON.stringify(valueToStore));
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    [storageType, hasStorage]
+  );
+
+  const setType = (newType) => {
+    if (newType === storageType) return;
+    if (WebStorageTypes.includes(newType)) {
+      setStorageType(newType);
     }
   };
 
-  const setType = (newType) => {
-    if (newType !== storageType) setStorageType(newType);
-  };
-
+  /* Set up listener for WebStorage on this hook instance */
   useEffect(() => {
     if (!hasStorage) return;
     function handleStorageEvent(event) {
@@ -98,21 +106,13 @@ const useWebStorage = (
   }, []);
 
   useEffect(() => {
-    if (!hasStorage || !webStorage || !key) return;
-    let value = webStorage.getItem(key);
-    if (value === null && initialValue) {
-      value === initialValue;
-      webStorage.setItem(key, JSON.stringify(value));
-    }
-    setStoredValue(JSON.parse(value));
-  }, [webStorage, key, initialValue]);
-
-  useEffect(() => {
     if (!storageType) return;
-    setWebStorage(window[storageType]);
+    const available = storageAvailable(storageType);
+    setHasStorage(available);
+    setStoredValue(getValue());
   }, [storageType]);
 
-  return [storedValue, setValue, setType];
+  return [storedValue, setValue, storageType, setType];
 };
 
 export { useWebStorage, hasLocalStorage, hasSessionStorage };

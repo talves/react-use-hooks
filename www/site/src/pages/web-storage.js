@@ -3,16 +3,15 @@ import { useState, useEffect } from "preact/compat";
 import { useWebStorage } from "@talves/use-web-storage";
 
 export default (props) => {
-  const [storageType, setStorageType] = useState("sessionStorage");
-  const [storage, setStorage, setType] = useWebStorage(
+  const [storage, setStorage, storageType, setStorageType] = useWebStorage(
     "test-data",
     { site: "tony.alves.dev" },
-    { type: storageType }
+    { type: "sessionStorage" }
   );
 
   useEffect(() => {
-    setType(storageType);
-  }, [storageType]);
+    console.log("web-storage(js):", storage);
+  }, [storage]);
 
   const handleChangeEvent = (e) => {
     setStorage({ site: e.target.value });
@@ -58,7 +57,7 @@ export default (props) => {
             class="form-input mt-1 block w-full"
             placeholder="Enter value"
             onChange={handleChangeEvent}
-            value={storage ? storage.site : ""}
+            value={storage.site}
           />
         </label>
         {storage && (
