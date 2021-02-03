@@ -1,5 +1,11 @@
 # @talves/use-web-storage
 
+## 0.5.0
+
+### Minor Changes
+
+- b762829: refactor useWebStorage hook
+
 ## 0.4.0
 
 ### Minor Changes
