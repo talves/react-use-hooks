@@ -1,0 +1,56 @@
+export const meta = {
+  draft: false,
+  title: "usePrevious",
+  slug: "/use-previous",
+  date: "2019-01-29T10:30:00.000Z",
+  update: "2019-01-29T10:30:00.000Z",
+  description: "usePrevious gives you the value of your last state.",
+};
+
+import { Box } from "./src/components/Box.js";
+import { useState } from "react";
+import { usePrevious } from "@talves/use-previous";
+export const Example = (props) => {
+  const [value, setValue] = useState(1);
+  const lastValue = usePrevious(value);
+  return (
+    <Box class={props.class}>
+      <Box
+        class="form-input"
+        as="button"
+        type="button"
+        onClick={() => setValue(value + 1)}
+      >
+        Click here to increment
+      </Box>
+      <Box as="h2">{`Current Value: ${value}`}</Box>
+      <Box as="h2">{`Previous Value: ${lastValue}`}</Box>
+    </Box>
+  );
+};
+
+# {meta.title}
+
+<Box class="text-2xl" as="h3">
+  {meta.description}
+</Box>
+
+<Example class="flex flex-col border-gray-400 border-2 p-2 m-5" />
+
+```js
+import { useState } from "react";
+import { usePrevious } from "@talves/use-previous";
+export const Example = (props) => {
+  const [value, setValue] = useState(1);
+  const lastValue = usePrevious(value);
+  return (
+    <div>
+      <button onClick={() => setValue(value + 1)}>
+        Click here to increment
+      </button>
+      <h2>{`Current Value: ${value}`}</h2>
+      <h2>{`Previous Value: ${lastValue}`}</h2>
+    </div>
+  );
+};
+```

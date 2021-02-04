@@ -5,7 +5,7 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  purge: ["./src/**/*.js"],
+  purge: ["./src/**/*.js", "./content/**/*.mdx"],
   theme: {
     customForms: (theme) => ({
       default: {
