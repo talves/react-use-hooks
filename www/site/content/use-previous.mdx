@@ -4,13 +4,13 @@ export const meta = {
   slug: "/use-previous",
   date: "2019-01-29T10:30:00.000Z",
   update: "2019-01-29T10:30:00.000Z",
-  description: "usePrevious gives you the value of your last state.",
+  description: "usePrevious gives you the value of your last state."
 };
 
 import { Box } from "./src/components/Box.js";
 import { useState } from "react";
 import { usePrevious } from "@talves/use-previous";
-export const Example = (props) => {
+export const Example = props => {
   const [value, setValue] = useState(1);
   const lastValue = usePrevious(value);
   return (
@@ -31,16 +31,14 @@ export const Example = (props) => {
 
 # {meta.title}
 
-<Box class="text-2xl" as="h3">
-  {meta.description}
-</Box>
+{meta.description}
 
 <Example class="flex flex-col border-gray-400 border-2 p-2 m-5" />
 
 ```js
 import { useState } from "react";
 import { usePrevious } from "@talves/use-previous";
-export const Example = (props) => {
+export const Example = props => {
   const [value, setValue] = useState(1);
   const lastValue = usePrevious(value);
   return (

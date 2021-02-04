@@ -32,6 +32,14 @@ module.exports = {
         900: "#1E2E34",
       },
     },
+    minHeight: {
+      0: "0",
+      "1/4": "25%",
+      "1/2": "50%",
+      "3/4": "75%",
+      80: "80vh",
+      full: "100%",
+    },
     customForms: (theme) => ({
       default: {
         input: {
