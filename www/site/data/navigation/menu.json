@@ -1,13 +1,6 @@
 {
   "items": [
     {
-      "path": "/posts/",
-      "hidden": true,
-      "label": "Blog",
-      "type": "route",
-      "heading": "default"
-    },
-    {
       "path": "/data",
       "hidden": false,
       "label": "Data",
@@ -16,14 +9,14 @@
     },
     {
       "path": "/web-storage",
-      "hidden": false,
+      "hidden": true,
       "label": "useWebStorage",
       "type": "route",
       "heading": "default"
     },
     {
       "path": "/web-storage-color",
-      "hidden": false,
+      "hidden": true,
       "label": "useWebStorage-C",
       "type": "route",
       "heading": "default"

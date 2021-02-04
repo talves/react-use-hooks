@@ -3,29 +3,30 @@ import { Box } from "../components/Box.js";
 
 export default (props) => (
   <div>
-    <div class="shadow sm:rounded-lg">
-      <ul class="list-disc space-y-2">
-        {props.hooks &&
-          props.hooks
-            .filter((t) => !t.meta.draft)
-            .sort((a, b) => {
-              return Date.parse(a.meta.date) < Date.parse(b.meta.date) ? 1 : -1;
-            })
-            .map(({ meta }, index) => (
-              <li
+    <div class="container container max-w-xl m-auto flex flex-wrap flex-col md:flex-row items-center justify-start">
+      {props.hooks &&
+        props.hooks
+          .filter((t) => !t.meta.draft)
+          .sort((a, b) => {
+            return Date.parse(a.meta.date) < Date.parse(b.meta.date) ? 1 : -1;
+          })
+          .map(({ meta }, index) => (
+            <div class="w-full lg:w-1/2 p-3">
+              <div
                 key={index}
-                class="flex items-start shadow overflow-hidden border-b text-primary-800"
+                class="flex flex-col lg:flex-row rounded overflow-hidden h-auto lg:h-48 border shadow-lg"
               >
-                <div class="flex items-center">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
                   <a class="p-4" href={meta.slug}>
-                    <Box as="span" class="text-primary-700 text-lg font-medium">
+                    <h2 class="text-2xl font-bold mb-2 text-primary-800">
                       {meta.title}
-                    </Box>
+                    </h2>
+                    <span class="text-gray-700">{meta.description}</span>
                   </a>
                 </div>
-              </li>
-            ))}
-      </ul>
+              </div>
+            </div>
+          ))}
     </div>
   </div>
 );

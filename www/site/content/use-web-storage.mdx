@@ -1,0 +1,229 @@
+export const meta = {
+  draft: false,
+  title: "useWebStorage",
+  slug: "/use-web-storage",
+  date: "2019-01-29T10:30:00.000Z",
+  update: "2019-01-29T10:30:00.000Z",
+  description:
+    "useWebStorage stores your value in local or session storage in the browser."
+};
+
+import { useState, useEffect } from "react";
+import { useWebStorage } from "@talves/use-web-storage";
+
+export const Example = props => {
+  const [storage, setStorage, storageType, setStorageType] = useWebStorage(
+    "test-data",
+    { site: "tony.alves.dev" },
+    { type: "sessionStorage" }
+  );
+  useEffect(() => {
+    console.log("web-storage(js):", storage);
+  }, [storage]);
+  const handleChangeEvent = e => {
+    setStorage({ site: e.target.value });
+  };
+  const onChangeType = event => {
+    setStorageType(event.target.value);
+  };
+  return (
+    <div class="py-6 bg-default flex md:flex-col lg:flex-row justify-center sm:py-12">
+      <div class="w-full lg:w-3/4 border-gray-400 border-2 p-2 m-5">
+        <div class="p-4">
+          <span class="text-gray-700">Web Storage Type</span>
+          <div class="mt-2" onChange={onChangeType}>
+            <label class="inline-flex items-center">
+              <input
+                type="radio"
+                class="form-radio"
+                value="localStorage"
+                name="storageType"
+                defaultChecked={storageType === "localStorage"}
+              />
+              <span class="ml-2">localStorage</span>
+            </label>
+            <label class="inline-flex items-center ml-6">
+              <input
+                type="radio"
+                class="form-radio"
+                value="sessionStorage"
+                name="storageType"
+                defaultChecked={storageType === "sessionStorage"}
+              />
+              <span class="ml-2">sessionStorage</span>
+            </label>
+          </div>
+        </div>
+        <label class="block p-4">
+          <span class="text-gray-700">Site</span>
+          <input
+            class="form-input mt-1 block w-full"
+            placeholder="Enter value"
+            onChange={handleChangeEvent}
+            value={storage.site}
+          />
+        </label>
+        {storage && (
+          <pre class="border-blue-100 border-2 bg-yellow-50 p-4">
+            {JSON.stringify(storage, null, 2)}
+          </pre>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export const ExampleColor = props => {
+  const [bgColor, setBgColor] = useWebStorage("background-color", "#FFE000");
+  useEffect(() => {
+    console.log(bgColor);
+  }, [bgColor]);
+  const handleColorChange = event => {
+    setBgColor(event.target.value);
+  };
+  return (
+    <div class="py-6 bg-default flex md:flex-col lg:flex-row justify-center sm:py-12">
+      <div class="w-full lg:w-3/4 border-gray-400 border-2 p-2 m-5">
+        <div class="p-4">
+          <span class="text-2xl text-gray-700">
+            Simple Color (localStorage)
+          </span>
+        </div>
+        <label class="block">
+          <span class="text-gray-700">Color</span>
+          <input
+            class="form-input mt-1 block w-full"
+            placeholder="Enter value"
+            onChange={handleColorChange}
+            value={bgColor}
+          />
+        </label>
+        <pre
+          class="border-blue-100 border-2 p-4"
+          style={{ backgroundColor: bgColor }}
+        >
+          {JSON.stringify(bgColor, null, 2)}
+        </pre>
+      </div>
+    </div>
+  );
+};
+
+# {meta.title}
+
+{meta.description}
+
+<Example />
+
+#### Code for example above
+
+```js
+import { useState, useEffect } from "react";
+import { useWebStorage } from "@talves/use-web-storage";
+
+export const Example = props => {
+  const [storage, setStorage, storageType, setStorageType] = useWebStorage(
+    "test-data",
+    { site: "tony.alves.dev" },
+    { type: "sessionStorage" }
+  );
+  useEffect(() => {
+    console.log("web-storage(js):", storage);
+  }, [storage]);
+  const handleChangeEvent = e => {
+    setStorage({ site: e.target.value });
+  };
+  const onChangeType = event => {
+    setStorageType(event.target.value);
+  };
+  return (
+    <div class="py-6 bg-default flex md:flex-col lg:flex-row justify-center sm:py-12">
+      <div class="w-full lg:w-3/4 border-gray-400 border-2 p-2 m-5">
+        <div class="p-4">
+          <span class="text-gray-700">Web Storage Type</span>
+          <div class="mt-2" onChange={onChangeType}>
+            <label class="inline-flex items-center">
+              <input
+                type="radio"
+                class="form-radio"
+                value="localStorage"
+                name="storageType"
+                defaultChecked={storageType === "localStorage"}
+              />
+              <span class="ml-2">localStorage</span>
+            </label>
+            <label class="inline-flex items-center ml-6">
+              <input
+                type="radio"
+                class="form-radio"
+                value="sessionStorage"
+                name="storageType"
+                defaultChecked={storageType === "sessionStorage"}
+              />
+              <span class="ml-2">sessionStorage</span>
+            </label>
+          </div>
+        </div>
+        <label class="block p-4">
+          <span class="text-gray-700">Site</span>
+          <input
+            class="form-input mt-1 block w-full"
+            placeholder="Enter value"
+            onChange={handleChangeEvent}
+            value={storage.site}
+          />
+        </label>
+        {storage && (
+          <pre class="border-blue-100 border-2 bg-yellow-50 p-4">
+            {JSON.stringify(storage, null, 2)}
+          </pre>
+        )}
+      </div>
+    </div>
+  );
+};
+```
+
+<ExampleColor />
+
+Here's a simple example of how to use local storage and change the value. Refresh the page to see the value persist. Also open another browser window to see the value persist across pages and changing with an event listener.
+
+#### Code for example above
+
+```js
+export const ExampleColor = props => {
+  const [bgColor, setBgColor] = useWebStorage("background-color", "#FFE000");
+  useEffect(() => {
+    console.log(bgColor);
+  }, [bgColor]);
+  const handleColorChange = event => {
+    setBgColor(event.target.value);
+  };
+  return (
+    <div class="py-6 bg-default flex md:flex-col lg:flex-row justify-center sm:py-12">
+      <div class="w-full lg:w-3/4 border-gray-400 border-2 p-2 m-5">
+        <div class="p-4">
+          <span class="text-2xl text-gray-700">
+            Simple Color (localStorage)
+          </span>
+        </div>
+        <label class="block">
+          <span class="text-gray-700">Color</span>
+          <input
+            class="form-input mt-1 block w-full"
+            placeholder="Enter value"
+            onChange={handleColorChange}
+            value={bgColor}
+          />
+        </label>
+        <pre
+          class="border-blue-100 border-2 p-4"
+          style={{ backgroundColor: bgColor }}
+        >
+          {JSON.stringify(bgColor, null, 2)}
+        </pre>
+      </div>
+    </div>
+  );
+};
+```
