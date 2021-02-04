@@ -1,11 +1,17 @@
 export const meta = {
-  title: "A Post",
-  slug: "/a-post",
+  draft: false,
+  title: "useWebStorage",
+  slug: "/use-web-storage",
+  date: "2019-01-29T10:30:00.000Z",
+  update: "2019-01-29T10:30:00.000Z",
+  description: "useWebStorage is a hook for WebStorage",
 };
 
-# A Post
+import { Box } from "./src/components/Box.js";
 
-and some content
+# {meta.title}
+
+<Box as="h3">{meta.description}</Box>
 
 ```js
 const thing = {};
