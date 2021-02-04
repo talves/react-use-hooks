@@ -32,7 +32,8 @@
     "browser-sync": "^2.26.13",
     "execa": "^4.1.0",
     "gulp": "^4.0.2",
-    "gulp-cli": "^2.3.0"
+    "gulp-cli": "^2.3.0",
+    "postcss-import": "^14.0.0"
   },
   "snowpack": {
     "exclude": [
