@@ -18,11 +18,11 @@ export const ThemeSwitcher = (props) => (
 const NavigationBar = (props) => {
   return (
     <NavigationBarWrapper className="relative flex flex-row h-18 p-2 bg-transparent font-medium text-fire-900">
-      <Box className="flex h-18">
-        <Box as="a" href="/" className="h-16 flex-item">
+      <Box className="flex">
+        <Box as="a" href="/" className="flex-item">
           <Box
             as="span"
-            className="absolute bottom-0 text-4xl font-semibold my-auto italic text-fire"
+            className="text-4xl font-semibold my-auto italic text-fire"
           >
             {props.header}
           </Box>
