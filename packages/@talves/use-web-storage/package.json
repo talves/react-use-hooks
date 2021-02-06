@@ -15,7 +15,8 @@
     "url": "https://github.com/talves/react-use-hooks/packages/@talves/use-web-storage"
   },
   "dependencies": {
-    "@babel/runtime": "^7.12.1"
+    "@babel/runtime": "^7.12.1",
+    "react": "^17.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
