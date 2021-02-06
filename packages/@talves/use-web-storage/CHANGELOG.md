@@ -1,5 +1,11 @@
 # @talves/use-web-storage
 
+## 0.5.1
+
+### Patch Changes
+
+- 93d3734: fix allowing "null" options
+
 ## 0.5.0
 
 ### Minor Changes
