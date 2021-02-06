@@ -41,7 +41,11 @@ const useWebStorage = (
   options = { type: "localStorage" }
 ) => {
   /* options are optional, so default to 'localStorage' */
-  const [storageType, setStorageType] = useState(options.type);
+  const [storageType, setStorageType] = useState(
+    options && WebStorageTypes.includes(options.type)
+      ? options.type
+      : "localStorage"
+  );
   const [hasStorage, setHasStorage] = useState(storageAvailable(storageType));
 
   const getValue = useCallback(() => {
