@@ -27,6 +27,10 @@ jobs:
       - name: Build Packages
         run: yarn build
 
+      - name: Test Packages
+        if: ${{ success() }}
+        run: yarn test
+
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@master
