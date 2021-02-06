@@ -12,7 +12,8 @@
     "postinstall": "breadbox --dest public/web_modules",
     "build": "yarn postinstall && yarn build:css && yarn build:site",
     "build:css": "postcss --config legacy-commonjs src/index.css -o public/styles.css --env production",
-    "build:site": "toast incremental ."
+    "build:site": "toast incremental .",
+    "test": "echo \"No tests on Site\""
   },
   "dependencies": {
     "@mdx-js/preact": "^1.6.22",

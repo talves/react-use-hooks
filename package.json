@@ -21,9 +21,10 @@
     "build:site": "yarn workspace site build",
     "build:previous": "yarn workspace @talves/use-previous build:lib",
     "build:web-storage": "yarn workspace @talves/use-web-storage build:lib",
-    "build:all": "yarn build:previous && yarn build:web-storage",
+    "build:all": "yarn workspaces run build",
     "build": "yarn build:all",
-    "release": "yarn changeset publish"
+    "release": "yarn changeset publish",
+    "test": "yarn workspaces run test"
   },
   "browserslist": [
     "last 2 Chrome versions",
@@ -40,6 +41,9 @@
     }
   },
   "lint-staged": {
-    "*.{js,css,md}": "prettier --write"
+    "*.{js,css,md}": [
+      "prettier --write",
+      "yarn test"
+    ]
   }
 }
