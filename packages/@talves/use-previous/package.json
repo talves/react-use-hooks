@@ -15,7 +15,8 @@
     "url": "https://github.com/talves/react-use-hooks/packages/@talves/use-previous"
   },
   "dependencies": {
-    "@babel/runtime": "^7.12.1"
+    "@babel/runtime": "^7.12.1",
+    "react": "^17.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
@@ -27,8 +28,11 @@
     "@rollup/plugin-babel": "^5.2.1",
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
+    "@testing-library/react-hooks": "^5.0.3",
     "eslint": "^7.13.0",
     "eslint-plugin-react": "^7.21.5",
+    "jest": "^26.6.3",
+    "react-test-renderer": "^17.0.1",
     "rollup": "^2.32.0",
     "rollup-plugin-peer-deps-external": "^2.2.3"
   },
@@ -44,7 +48,9 @@
     "build:babel": "babel ./src/index.js --out-file ./dist/es/index.js --source-maps",
     "build": "yarn clean && yarn build:lib",
     "dev": "yarn build:dev",
-    "format": "prettier --write \"src/**/*.js\""
+    "format": "prettier --write \"src/**/*.js\"",
+    "format:test": "prettier --write \"./**/*.test.js\"",
+    "test": "jest"
   },
   "browserslist": [
     "last 2 Chrome versions",
