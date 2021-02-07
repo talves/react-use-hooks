@@ -4,6 +4,7 @@ import { Box } from "../components/Box.js";
 import LogoIcon from "../components/icons/logo-icon.js";
 
 // http://localhost:3000/og?title=Hello%20this%20is%20just%20a%20title&name=Tony%20Alves%20(@talves)&slug=/use-web-storage&tag=react-hooks&tag=react
+// https://use-hooks.alves.dev/.netlify/functions/og-create?title=Hello%20this%20is%20just%20a%20title&name=Tony%20Alves%20(@talves)&slug=/use-web-storage&tag=react-hooks&tag=react
 
 const location =
   typeof window !== "undefined" && window.location ? window.location : null;
@@ -38,9 +39,9 @@ export default (props) => {
   const tags = typeof tag === "string" ? [tag] : tag;
 
   return (
-    <Box id={id}>
+    <Box id={id} style={{ width: width, height: height }}>
       <div
-        className="relative flex flex-col justify-between px-8 pt-24 pb-16 space-y-8 bg-gray-100 border-primary-300 shadow-md"
+        className="relative flex flex-col justify-between px-8 pt-16 pb-8 space-y-8 bg-gray-100 border-primary-300 shadow-md"
         style={{ width: width, height: height, borderWidth: borderWidth }}
       >
         <div className="absolute top-0 right-0 mt-6 mr-6">
