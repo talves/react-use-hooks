@@ -10,6 +10,7 @@ const buildUri = ({ queryStringParameters = {} }) => {
     width,
     height,
     mode,
+    slug,
   } = queryStringParameters;
 
   let tags = "";
@@ -21,10 +22,11 @@ const buildUri = ({ queryStringParameters = {} }) => {
   }
   const dimensions = width && height ? `&width=${width}&height=${height}` : "";
   const colorMode = mode ? `&mode=${mode}` : "";
+  const slugPath = slug ? `&slug=${slug}` : "";
 
   return {
     id,
-    path: `${ogpath}?id=${id}&name=${name}&title=${title}${tags}${dimensions}${colorMode}`,
+    path: `${ogpath}?id=${id}&name=${name}&title=${title}${tags}${dimensions}${colorMode}${slugPath}`,
   };
 };
 

@@ -41,7 +41,7 @@ export default (props) => {
     <Box id={id}>
       <div
         className="relative flex flex-col justify-between px-8 pt-24 pb-16 space-y-8 bg-gray-100 border-primary-300 shadow-md"
-        style={{ width: width, height: height, borderWidth: 16 }}
+        style={{ width: width, height: height, borderWidth: borderWidth }}
       >
         <div className="absolute top-0 right-0 mt-6 mr-6">
           <LogoIcon
