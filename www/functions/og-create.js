@@ -70,6 +70,7 @@ exports.handler = async function (event) {
 
     // await new Promise((resolve) => setTimeout(resolve, "200"));
     await page.waitForSelector(`#${uri.id}`, { timeout: 1000 });
+    await page.waitForSelector("img");
     const boundingRect = await page.evaluate(getBoundingSize, uri);
     const screenshotBuffer = await page.screenshot({ clip: boundingRect });
     await browser.close();
