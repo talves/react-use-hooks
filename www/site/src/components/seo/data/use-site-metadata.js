@@ -1,12 +1,17 @@
 import { h } from "preact";
+import { useEffect, useState } from "preact/compat";
 import { useSiteData } from "../../../site-data-provider.js";
 
 export const useSiteMetadata = () => {
   const siteData = useSiteData();
-  const siteMetaData = siteData["site-metadata"] || {};
-  const data = {
-    ...siteMetaData,
-  };
+  const [data, setData] = useState(
+    siteData ? siteData["site-metadata"] || {} : {}
+  );
+
+  useEffect(() => {
+    if (!siteData) return;
+    setData(siteData["site-metadata"] || {});
+  }, [siteData]);
   // title;
   // description;
   // author;

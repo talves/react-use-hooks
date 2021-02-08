@@ -8,6 +8,9 @@ import SEO from "../seo/index.js";
 export const FlexLayout = (props) => <div {...props}>{props.children}</div>;
 
 export default ({ children, ...props }) => {
+  /* mdx meta data will come through on the children props */
+  const { props: childProps = {} } = children || {};
+
   return (
     <FlexLayout>
       <Helmet>
@@ -36,7 +39,7 @@ export default ({ children, ...props }) => {
         <link rel="stylesheet" href="/styles.css" />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       </Helmet>
-      <SEO pageMeta={props.meta} />
+      <SEO pageMeta={props.meta || childProps.meta || {}} />
       <Header header={props.header} />
       <Main {...props}>{children}</Main>
       <Footer />

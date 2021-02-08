@@ -20,33 +20,19 @@ const SEO = ({ pageMeta = {} }) => {
     organization = null,
     isArticle = false,
   } = pageMeta;
-
-  const {
-    title: defaultTitle,
-    titleTemplate,
-    description: defaultDescription,
-    url: siteUrl,
-    image: defaultImage,
-    owner,
-    author: defaultAuthor,
-    organization: defaultOrganization,
-    twitterUsername,
-    twitterCardType,
-    facebookAppID,
-  } = useSiteMetadata();
+  const siteDefault = useSiteMetadata();
   const seo = {
-    title: title || defaultTitle,
-    description: description || defaultDescription,
-    image: `${siteUrl}${image || defaultImage}`,
-    url: `${siteUrl}${pathname || "/"}`,
-    author: author || defaultAuthor,
-    organization: organization || defaultOrganization || owner,
+    title: title || siteDefault.title,
+    description: description || siteDefault.description,
+    image: `${siteDefault.url}${image || siteDefault.image}`,
+    url: `${siteDefault.url}${pathname || "/"}`,
+    author: author || siteDefault.author,
+    organization: organization || siteDefault.organization || siteDefault.owner,
   };
-  // console.log('pageMeta', pageMeta, seo);
 
   return (
     <>
-      <Helmet title={seo.title} titleTemplate={titleTemplate}>
+      <Helmet title={seo.title} titleTemplate={siteDefault.titleTemplate}>
         <meta name="description" content={seo.description} />
         <meta name="image" content={seo.image} />
         <link rel="canonical" href={seo.url} />
@@ -62,12 +48,12 @@ const SEO = ({ pageMeta = {} }) => {
         {/* Is this an Article */}
         {isArticle ? <meta property="og:type" content="article" /> : null}
       </Helmet>
-      <Facebook appID={facebookAppID} />
+      <Facebook appID={siteDefault.facebookAppID} />
       <Twitter
-        username={twitterUsername}
+        username={siteDefault.twitterUsername}
         title={seo.title}
         description={seo.description}
-        cardType={twitterCardType}
+        cardType={siteDefault.twitterCardType}
         image={seo.image}
       />
       <SchemaOrg
@@ -77,7 +63,7 @@ const SEO = ({ pageMeta = {} }) => {
         image={seo.image}
         description={seo.description}
         datePublished={datePublished}
-        siteUrl={siteUrl}
+        siteUrl={siteDefault.url}
         author={seo.author}
         organization={seo.organization}
         defaultTitle={seo.title}

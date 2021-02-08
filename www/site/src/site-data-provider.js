@@ -29,14 +29,8 @@ export const useSiteData = () => {
   return context;
 };
 
-export const SiteDataProvider = ({ data = {}, url, children }) => {
-  const [state, updateContext] = useReducer(sitedataReducer, data);
-  useEffect(() => {
-    updateContext({
-      type: "UPDATE",
-      data,
-    });
-  }, [data]);
+export const SiteDataProvider = ({ url, children }) => {
+  const [state, updateContext] = useReducer(sitedataReducer, {});
 
   useEffect(() => {
     if (!url) return;
