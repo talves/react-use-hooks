@@ -40,8 +40,7 @@ export const sourceData = async ({ setDataForSlug }) => {
     slugPrefix: "/",
   });
   await setDataForSlug("/", {
-    data: { hooks: allHooks },
-    data: { siteMeta: settings["site-metadata"] || {} },
+    data: { hooks: allHooks, siteMeta: settings["site-metadata"] || {} },
   });
   await setDataForSlug("/about", {
     data: { siteMeta: settings["site-metadata"] || {} },
