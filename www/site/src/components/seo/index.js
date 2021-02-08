@@ -3,13 +3,12 @@ import { Helmet } from "react-helmet";
 import Twitter from "./twitter.js";
 import Facebook from "./facebook.js";
 import SchemaOrg from "./schema-org.js";
-import { useSiteMetadata } from "./data/use-site-metadata.js";
 
 /* 
 https://tony.alves.dev/.netlify/functions/og-create/?ogpath=https://tony.alves.dev/og/&title=Read%20about%20the%20tech%20I%27m%20working%20on!&tag=site&tag=https://tony.alves.dev&name=Tony%20Alves&width=1024&height=542&mode=dark
 */
 
-const SEO = ({ pageMeta = {} }) => {
+const SEO = ({ pageMeta = {}, siteMeta = {} }) => {
   const {
     title = null,
     description = null,
@@ -20,19 +19,18 @@ const SEO = ({ pageMeta = {} }) => {
     organization = null,
     isArticle = false,
   } = pageMeta;
-  const siteDefault = useSiteMetadata();
   const seo = {
-    title: title || siteDefault.title,
-    description: description || siteDefault.description,
-    image: `${siteDefault.url}${image || siteDefault.image}`,
-    url: `${siteDefault.url}${pathname || "/"}`,
-    author: author || siteDefault.author,
-    organization: organization || siteDefault.organization || siteDefault.owner,
+    title: title || siteMeta.title,
+    description: description || siteMeta.description,
+    image: `${siteMeta.url}${image || siteMeta.image}`,
+    url: `${siteMeta.url}${pathname || "/"}`,
+    author: author || siteMeta.author,
+    organization: organization || siteMeta.organization || siteMeta.owner,
   };
 
   return (
     <>
-      <Helmet title={seo.title} titleTemplate={siteDefault.titleTemplate}>
+      <Helmet title={seo.title} titleTemplate={siteMeta.titleTemplate}>
         <meta name="description" content={seo.description} />
         <meta name="image" content={seo.image} />
         <link rel="canonical" href={seo.url} />
@@ -48,12 +46,12 @@ const SEO = ({ pageMeta = {} }) => {
         {/* Is this an Article */}
         {isArticle ? <meta property="og:type" content="article" /> : null}
       </Helmet>
-      <Facebook appID={siteDefault.facebookAppID} />
+      <Facebook appID={siteMeta.facebookAppID} />
       <Twitter
-        username={siteDefault.twitterUsername}
+        username={siteMeta.twitterUsername}
         title={seo.title}
         description={seo.description}
-        cardType={siteDefault.twitterCardType}
+        cardType={siteMeta.twitterCardType}
         image={seo.image}
       />
       <SchemaOrg
@@ -63,7 +61,7 @@ const SEO = ({ pageMeta = {} }) => {
         image={seo.image}
         description={seo.description}
         datePublished={datePublished}
-        siteUrl={siteDefault.url}
+        siteUrl={siteMeta.url}
         author={seo.author}
         organization={seo.organization}
         defaultTitle={seo.title}

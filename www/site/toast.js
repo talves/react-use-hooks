@@ -41,6 +41,18 @@ export const sourceData = async ({ setDataForSlug }) => {
   });
   await setDataForSlug("/", {
     data: { hooks: allHooks },
+    data: { siteMeta: settings["site-metadata"] || {} },
+  });
+  await setDataForSlug("/about", {
+    data: { siteMeta: settings["site-metadata"] || {} },
+  });
+  // Set the meta for each post at the page level
+  // This is already done above in the sourceMdx
+  //   but we want to add siteMetadata to each post also
+  allHooks.forEach(async (hook) => {
+    await setDataForSlug(`./${hook.meta.slug}`, {
+      data: { meta: hook.meta, siteMeta: settings["site-metadata"] || {} },
+    });
   });
 
   return;
