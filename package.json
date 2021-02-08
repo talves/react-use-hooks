@@ -24,6 +24,7 @@
     "build:web-storage": "yarn workspace @talves/use-web-storage build:lib",
     "build:all": "yarn workspaces run build",
     "build": "yarn build:all",
+    "og:images": "node ./www/scripts/social-card.mjs",
     "release": "yarn changeset publish",
     "test": "yarn workspaces run test"
   },

@@ -1,16 +1,18 @@
-const fs = require("fs");
-const path = require("path");
-const https = require("https");
-const matter = require("gray-matter");
-const { buildUri } = require("../functions/og-create.js");
+import fs from "fs";
+import path from "path";
+import https from "https";
+import { processMdx } from "@toastdotdev/mdx";
+import { buildUri } from "../functions/og-create.js";
+import minimist from "minimist";
 
-const args = require("minimist")(process.argv.slice(2), {
+const args = minimist(process.argv.slice(2), {
   default: {
     input: "www/site/content",
     output: "www/site/static/images/social",
     width: 1024,
     height: 542,
     tag: [],
+    slug: "",
   },
   alias: {
     i: "input",
@@ -31,27 +33,44 @@ console.log(`exists: [${inputExists}] ${inputPath}`);
 const outputExists = fs.existsSync(outputPath);
 console.log(`exists: [${outputExists}] ${outputPath}`);
 
-function processFile(filepath) {
+async function processFile(filepath) {
   const content = fs.readFileSync(filepath, "utf8");
-  const { data } = matter(content);
-  const nameArray = data.path ? data.path.split("/") : ["site-default"];
+  const {
+    data: {
+      exports: { meta: data },
+    },
+  } = await processMdx(content, {});
+  // console.log("data:", JSON.stringify(data, null, 2));
+  const nameArray = data.slug ? data.slug.split("/") : ["site-default"];
+
+  if (Boolean(data.draft)) {
+    console.warn(`[skipping-draft] ${filepath}`);
+    return;
+  }
+  const tag = args.tag && args.tag.length ? args.tag : null;
 
   const options = {
     queryStringParameters: {
       name: args.name || "Tony Alves",
       title: args.title || data.title,
-      width: args.width,
-      height: args.height,
-      tag: (args.tag && args.tag.length) || data.keywords || [],
+      width: args.width || 1200,
+      height: args.height || 630,
+      tag: tag || data.keywords || [],
       mode: args.mode,
+      slug: args.slug || data.slug,
     },
   };
 
   console.log("-----------------------------------------");
   // console.log(JSON.stringify(options, null, 2));
-  const uri = `https://use-hooks.alves.dev/.netlify/functions/og-create?${
-    buildUri(options).path.split("?")[1]
-  }`;
+  const uri = encodeURI(
+    `https://use-hooks.alves.dev/.netlify/functions/og-create?${buildUri(
+      options
+    )
+      .path.split("?")
+      .slice(1)
+      .join("")}`
+  );
   console.log(encodeURI(uri));
 
   const outputName = `${nameArray[nameArray.length - 1]}.png`;
@@ -104,7 +123,7 @@ function processFile(filepath) {
 function isValidExtension(filePath) {
   const fArray = filePath.split(".");
   const extension = fArray[fArray.length - 1];
-  return ["md", "mdx"].includes(extension);
+  return ["mdx"].includes(extension);
 }
 
 async function processDir(dirpath) {

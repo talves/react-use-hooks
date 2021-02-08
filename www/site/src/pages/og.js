@@ -4,6 +4,7 @@ import { Box } from "../components/Box.js";
 import LogoIcon from "../components/icons/logo-icon.js";
 
 // http://localhost:3000/og?title=Hello%20this%20is%20just%20a%20title&name=Tony%20Alves%20(@talves)&slug=/use-web-storage&tag=react-hooks&tag=react
+// https://use-hooks.alves.dev/.netlify/functions/og-create?title=Hello%20this%20is%20just%20a%20title&name=Tony%20Alves%20(@talves)&slug=/use-web-storage&tag=react-hooks&tag=react
 
 const location =
   typeof window !== "undefined" && window.location ? window.location : null;
@@ -65,7 +66,7 @@ export default (props) => {
         <div className="flex justify-between">
           <div className="flex items-center space-x-6">
             <img
-              src="https://pbs.twimg.com/profile_images/458694078817792000/Xq83C8iN_400x400.png"
+              src="/images/talves_400x400.png"
               alt={name}
               className="flex-none w-32 h-32 rounded-full shadow-md handsome"
             />
