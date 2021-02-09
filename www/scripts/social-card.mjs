@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import https from "https";
 import { processMdx } from "@toastdotdev/mdx";
-import { buildUri } from "../functions/og-create.js";
+import { buildUri } from "../../netlify/functions/og-create.js";
 import minimist from "minimist";
 
 const args = minimist(process.argv.slice(2), {
