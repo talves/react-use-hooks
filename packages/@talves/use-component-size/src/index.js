@@ -11,8 +11,8 @@ function getSize(el) {
   if (el) {
     size.width = el.offsetWidth;
     size.height = el.offsetHeight;
-    size.scrollHeight = el.scrollWidth;
-    size.scrollWidth = el.scrollHeight;
+    size.scrollHeight = el.scrollHeight;
+    size.scrollWidth = el.scrollWidth;
   }
   return size;
 }
