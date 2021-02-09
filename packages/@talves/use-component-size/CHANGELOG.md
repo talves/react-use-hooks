@@ -4,4 +4,4 @@
 
 ### Patch Changes
 
-- 2c26cb5: make type module and use src/index.js
+- 7254c7c: make type module and use src/index.js
