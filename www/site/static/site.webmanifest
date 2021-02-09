@@ -1,0 +1,19 @@
+{
+    "name": "use-hooks.alves.dev",
+    "short_name": "use-hooks.alves.dev",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#3C6A84",
+    "background_color": "#3C6A84",
+    "display": "standalone"
+}
