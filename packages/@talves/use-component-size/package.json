@@ -1,6 +1,6 @@
 {
   "name": "@talves/use-component-size",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "React hook (useComponentSize)",
   "main": "src/index.js",
   "type": "module",
