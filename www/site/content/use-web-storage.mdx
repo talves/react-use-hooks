@@ -113,9 +113,16 @@ export const ExampleColor = (props) => {
 
 # {meta.title}
 
-{meta.description}
+<p>{meta.description}</p>
 
 <Example />
+
+<p>
+  <OutsideLink>{"Click here to open another instance"}</OutsideLink>
+</p>
+
+> If you open another instance and use localStorage, you can watch the changes event for storage change.
+> Alternatively you shouldn't be able to see changes on sessionStorage.
 
 #### Code for example above
 

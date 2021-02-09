@@ -1,0 +1,37 @@
+@layer components {
+  .cmp-btn {
+    @apply inline-block m-1;
+  }
+
+  .btn {
+    @apply py-2 px-4 rounded bg-gray-300 border-gray-900 text-gray-700 shadow-xl;
+  }
+
+  .btn:focus {
+    @apply outline-none;
+  }
+
+  .btn__text {
+    @apply bg-transparent font-semibold;
+  }
+
+  .btn-primary {
+    @apply bg-primary-900 text-gray-100;
+  }
+  .btn-primary:hover {
+    @apply bg-primary-700 text-gray-100;
+  }
+  .btn-primary:active {
+    @apply bg-primary-900 text-gray-100;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary-900 text-gray-100;
+  }
+  .btn-secondary:hover {
+    @apply bg-secondary-700 text-gray-100;
+  }
+  .btn-secondary:active {
+    @apply bg-secondary-900 text-gray-100;
+  }
+}
