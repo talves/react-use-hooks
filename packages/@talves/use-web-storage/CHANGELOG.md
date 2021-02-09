@@ -1,5 +1,11 @@
 # @talves/use-web-storage
 
+## 0.5.2
+
+### Patch Changes
+
+- f55dc85: Setup up the listener on localStorage only.
+
 ## 0.5.1
 
 ### Patch Changes
