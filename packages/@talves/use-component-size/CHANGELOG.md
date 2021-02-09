@@ -1,5 +1,11 @@
 # @talves/use-component-size
 
+## 0.1.1
+
+### Patch Changes
+
+- 201e1b4: Fix scroll width & height values
+
 ## 0.1.0
 
 ### Minor Changes
