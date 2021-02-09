@@ -96,7 +96,8 @@ const useWebStorage = (
 
   /* Set up listener for WebStorage on this hook instance */
   useEffect(() => {
-    if (!hasStorage) return;
+    // only setup for localStorage, sessionStorage doesn't change accross instances
+    if (!hasStorage || storageType === "sessionStorage") return;
     function handleStorageEvent(event) {
       const {
         key: eventKey,
@@ -107,7 +108,7 @@ const useWebStorage = (
     }
     window.addEventListener("storage", handleStorageEvent);
     return () => window.removeEventListener("storage", handleStorageEvent);
-  }, []);
+  }, [key, storageType]);
 
   useEffect(() => {
     if (!storageType) return;
