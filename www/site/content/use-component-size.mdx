@@ -1,0 +1,121 @@
+export const meta = {
+  draft: false,
+  title: "useComponentSize",
+  slug: "/use-component-size",
+  date: "2019-01-29T10:30:00.000Z",
+  update: "2019-01-29T10:30:00.000Z",
+  description:
+    "useComponentSize gives you the size of your rendered component.",
+  keywords: ["react", "react-hooks"],
+  image: "/images/social/use-component-size.png",
+};
+
+import { Box } from "./src/components/Box.js";
+import { useState, useRef, useCallback, useEffect } from "react";
+import { useComponentSize } from "@talves/use-component-size";
+import { usePrevious } from "@talves/use-previous";
+function sizeEqual(a, b) {
+  return JSON.stringify(a) === JSON.stringify(b);
+}
+export const SizeWrapper = ({ children, onSizeChange, ...props }) => {
+  const wrapperRef = useRef(null);
+  const componentSize = useComponentSize(wrapperRef); // A custom Hook
+  const previousSize = usePrevious(componentSize);
+  const handleSizeChange = useCallback(
+    (size) => {
+      if (typeof onSizeChange === "function") {
+        onSizeChange(size);
+      }
+    },
+    [onSizeChange]
+  );
+  useEffect(() => {
+    const notEqual = !sizeEqual(componentSize, previousSize);
+    if (notEqual) {
+      handleSizeChange({
+        current: componentSize,
+        previous: previousSize,
+      });
+    }
+  }, [componentSize, previousSize, handleSizeChange]);
+  return (
+    <div ref={wrapperRef} {...props}>
+      {children}
+    </div>
+  );
+};
+
+export const SizedComponent = () => {
+  const [value, setValue] = useState({});
+  return (
+    <div class="flex flex-col border-gray-400 border-2 p-2 m-5">
+      <SizeWrapper
+        class="text-xl border-secondary-300 border-2 p-5"
+        onSizeChange={(size) => setValue(size)}
+      >
+        {"This is some example text"}
+      </SizeWrapper>
+      <pre>{`${JSON.stringify(value, null, 2)}`}</pre>
+    </div>
+  );
+};
+
+# {meta.title}
+
+<p>{meta.description}</p>
+<SizedComponent class="flex flex-col border-gray-400 border-2 p-2 m-5">
+  {"This is text"}
+</SizedComponent>
+
+#### Code for example above
+
+```js
+import { useRef, useCallback, useEffect } from "react";
+import { useComponentSize } from "@talves/use-component-size";
+import { usePrevious } from "@talves/use-previous";
+function sizeEqual(a, b) {
+  return JSON.stringify(a) === JSON.stringify(b);
+}
+export const SizeWrapper = ({ children, onSizeChange, ...props }) => {
+  const wrapperRef = useRef(null);
+  const componentSize = useComponentSize(wrapperRef); // A custom Hook
+  const previousSize = usePrevious(componentSize);
+  const handleSizeChange = useCallback(
+    (size) => {
+      if (typeof onSizeChange === "function") {
+        onSizeChange(size);
+      }
+    },
+    [onSizeChange]
+  );
+  useEffect(() => {
+    const notEqual = !sizeEqual(componentSize, previousSize);
+    if (notEqual) {
+      handleSizeChange({
+        current: componentSize,
+        previous: previousSize,
+      });
+    }
+  }, [componentSize, previousSize, handleSizeChange]);
+  return (
+    <div ref={wrapperRef} {...props}>
+      {children}
+    </div>
+  );
+};
+
+export const SizedComponent = () => {
+  const [value, setValue] = useState({});
+  return (
+    <div class="flex flex-col border-gray-400 border-2 p-2 m-5">
+      <SizeWrapper
+        class="border-secondary-300 border-2 p-2 m-5"
+        onSizeChange={(size) => setValue(size)}
+      >
+        {"This is some example text"}
+      </SizeWrapper>
+      <pre>{`${JSON.stringify(value, null, 2)}`}</pre>
+    </div>
+  );
+};
+```
