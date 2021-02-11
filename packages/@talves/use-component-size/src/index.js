@@ -50,3 +50,20 @@ export function useComponentSize(ref) {
 
   return componentSize;
 }
+
+export const SizeWrapper = ({ children, onSizeChange, ...props }) => {
+  const wrapperRef = useRef(null);
+  const componentSize = useComponentSize(wrapperRef); // A custom Hook
+
+  useEffect(() => {
+    if (typeof onSizeChange === "function") {
+      onSizeChange(size);
+    }
+  }, [componentSize]);
+
+  return (
+    <div ref={wrapperRef} {...props}>
+      {children}
+    </div>
+  );
+};
