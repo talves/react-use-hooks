@@ -36,10 +36,9 @@
   "scripts": {
     "prettier:all": "yarn prettier --write .",
     "build:site": "yarn workspace site build",
-    "build:previous": "yarn workspace @talves/use-previous build:lib",
-    "build:web-storage": "yarn workspace @talves/use-web-storage build:lib",
     "build:all": "yarn workspaces run build",
     "build": "yarn build:all",
+    "build:babel": "babel ./packages/@talves/use-previous/src/index.js --out-file ./dist/es/index.js --source-maps",
     "og:images": "node ./www/scripts/social-card.mjs",
     "release": "yarn changeset publish",
     "test": "jest"

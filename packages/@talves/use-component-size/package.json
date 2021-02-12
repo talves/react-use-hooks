@@ -24,7 +24,6 @@
     "clean": "rm -rf dist",
     "build:lib": "microbundle src/index.js -o dist --jsx React.createElement --no-compress --no-sourcemap",
     "watch": "microbundle src/index.js -o dist --watch --jsx React.createElement --no-compress --no-sourcemap",
-    "build:babel": "babel ./src/index.js --out-file ./dist/es/index.js --source-maps",
     "build": "yarn clean && yarn build:lib",
     "dev": "yarn build:dev",
     "format": "prettier --write \"src/**/*.js\""
