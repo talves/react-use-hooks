@@ -1,6 +1,6 @@
 {
   "name": "@talves/use-web-storage",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "description": "React hook (useWebStorage)",
   "source": "src/index.js",
   "main": "./dist/use-web-storage.js",
