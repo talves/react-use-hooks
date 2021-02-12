@@ -9,7 +9,7 @@
   "scripts": {
     "clean": "rm -rf ./.tmp && rm -rf ./public",
     "start": "NODE_ENV=production yarn gulp",
-    "postinstall": "breadbox --dest public/web_modules",
+    "postinstall": "node ./postinstall.js",
     "build": "yarn postinstall && yarn build:css && yarn build:site",
     "build:css": "postcss --config legacy-commonjs src/index.css -o public/styles.css --env production",
     "build:site": "toast incremental .",
@@ -17,26 +17,26 @@
   },
   "dependencies": {
     "@mdx-js/preact": "^1.6.22",
-    "@sector/breadbox": "^0.0.4",
-    "@talves/use-component-size": "*",
+    "@talves/use-component-size": "^0.1.1",
     "@talves/use-previous": "*",
     "@talves/use-web-storage": "*",
     "@toastdotdev/mdx": "^0.1.5",
     "autoprefixer": "10.2.3",
-    "postcss": "^8.2.4",
-    "postcss-cli": "^8.3.1",
+    "console.table": "^0.10.0",
+    "esinstall": "^1.0.5",
     "preact": "^10.5.12",
-    "tailwindcss": "^2.0.2",
-    "toast": "^0.3.41"
+    "pretty-bytes": "^5.5.0",
+    "toast": "^0.3.42"
   },
   "devDependencies": {
-    "@tailwindcss/custom-forms": "^0.2.1",
     "browser-sync": "^2.26.13",
     "execa": "^4.1.0",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "playwright-aws-lambda": "^0.6.0",
     "playwright-core": "^1.8.0",
+    "postcss": "^8.2.4",
+    "postcss-cli": "^8.3.1",
     "postcss-import": "^14.0.0",
     "query-string": "^6.13.8"
   },
@@ -52,9 +52,9 @@
       }
     },
     "knownEntrypoints": [
+      "@talves/use-component-size",
       "@talves/use-previous",
       "@talves/use-web-storage",
-      "@talves/use-component-size",
       "preact/hooks",
       "preact"
     ]
