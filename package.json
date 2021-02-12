@@ -42,7 +42,7 @@
     "build": "yarn build:all",
     "og:images": "node ./www/scripts/social-card.mjs",
     "release": "yarn changeset publish",
-    "test": "yarn workspaces run test"
+    "test": "jest"
   },
   "browserslist": [
     "last 2 Chrome versions",

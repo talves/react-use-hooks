@@ -36,8 +36,7 @@
     "build:babel": "babel ./src/index.js --out-file ./dist/es/index.js --source-maps",
     "build": "yarn clean && yarn build:lib",
     "dev": "yarn build:dev",
-    "format": "prettier --write \"src/**/*.js\"",
-    "test": "jest"
+    "format": "prettier --write \"src/**/*.js\""
   },
   "browserslist": [
     "last 2 Chrome versions",
