@@ -1,4 +1,4 @@
-console.log("Babel for @talves/use-web-storage!");
+console.log("Babel for testing!");
 
 module.exports = {
   presets: ["@babel/preset-env", "@babel/preset-react"],

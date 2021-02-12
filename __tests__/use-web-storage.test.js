@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { renderHook, act } from "@testing-library/react-hooks/native";
-import { useWebStorage, hasLocalStorage, hasSessionStorage } from "./src/index";
+import {
+  useWebStorage,
+  hasLocalStorage,
+  hasSessionStorage,
+} from "@talves/use-web-storage";
 
 test("should return sessionStorage as default (no options)", () => {
   const { result, rerender } = renderHook(() => {

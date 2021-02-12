@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { renderHook, act } from "@testing-library/react-hooks/native";
-import { usePrevious } from "./src/index";
+import { usePrevious } from "@talves/use-previous";
 
 test("should return undefined initial value and previous set value", () => {
   const { result, rerender } = renderHook(() => {
