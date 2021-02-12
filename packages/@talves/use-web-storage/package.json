@@ -1,7 +1,13 @@
 {
   "name": "@talves/use-web-storage",
   "version": "0.5.2",
-  "main": "src/index.js",
+  "description": "React hook (useWebStorage)",
+  "source": "src/index.js",
+  "main": "./dist/use-web-storage.js",
+  "exports": {
+    "import": "./dist/use-web-storage.modern.js",
+    "require": "./dist/use-web-storage.js"
+  },
   "type": "module",
   "author": "talves <tony@3alves.com> (@talves)",
   "license": "MIT",
@@ -42,9 +48,8 @@
   },
   "scripts": {
     "clean": "rm -rf dist",
-    "develop": "yarn build:dev",
-    "build:lib": "rollup -c",
-    "build:dev": "rollup -c -w",
+    "build:lib": "microbundle src/index.js -o dist --no-compress --no-sourcemap",
+    "watch": "microbundle src/index.js -o dist --watch --no-compress --no-sourcemap",
     "build:babel": "babel ./src/index.js --out-file ./dist/es/index.js --source-maps",
     "build": "yarn clean && yarn build:lib",
     "dev": "yarn build:dev",

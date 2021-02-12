@@ -1,4 +1,4 @@
-import { useState, useCallback, useLayoutEffect } from "react";
+import React, { useState, useCallback, useLayoutEffect } from "react";
 import ResizeObserver from "resize-observer-polyfill";
 
 function getSize(el) {

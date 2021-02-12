@@ -2,7 +2,7 @@ import React, { useState, forwardRef, createRef } from "react";
 import { render } from "@testing-library/react";
 import { renderHook, act } from "@testing-library/react-hooks";
 import "@testing-library/jest-dom/extend-expect";
-import { useComponentSize } from "./src/index";
+import { useComponentSize } from "./dist/use-component-size.modern";
 
 const RenderItem = forwardRef(({ ...props }, ref) => {
   // console.log(`props: ${JSON.stringify(props, null, 2)}`)
