@@ -37,7 +37,7 @@
     "prettier:all": "yarn prettier --write .",
     "build:site": "yarn workspace site build",
     "build:all": "yarn workspaces run build",
-    "build": "yarn build:all",
+    "build": "yarn build:all && yarn test",
     "build:babel": "babel ./packages/@talves/use-component-size/src/index.js --out-file ./dist/index.js --source-maps",
     "og:images": "node ./www/scripts/social-card.mjs",
     "release": "yarn changeset publish",
