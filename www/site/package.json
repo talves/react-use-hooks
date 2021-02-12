@@ -1,6 +1,6 @@
 {
   "name": "site",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "index.js",
   "private": true,
@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@mdx-js/preact": "^1.6.22",
-    "@talves/use-component-size": "^0.1.1",
+    "@talves/use-component-size": "^0.2.0",
     "@talves/use-previous": "*",
     "@talves/use-web-storage": "*",
     "@toastdotdev/mdx": "^0.1.5",
