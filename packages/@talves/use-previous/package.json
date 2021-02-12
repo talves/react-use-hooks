@@ -1,6 +1,6 @@
 {
   "name": "@talves/use-previous",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "React hook (usePrevious)",
   "source": "src/index.js",
   "main": "./dist/use-previous.js",

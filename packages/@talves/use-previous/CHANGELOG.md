@@ -1,5 +1,11 @@
 # @talves/use-previous
 
+## 0.6.0
+
+### Minor Changes
+
+- c47d5a5: move to microbundle for builds
+
 ## 0.5.1
 
 ### Patch Changes
