@@ -1,4 +1,10 @@
-import React, { useState, useCallback, useLayoutEffect } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useLayoutEffect,
+} from "react";
 import ResizeObserver from "resize-observer-polyfill";
 
 function getSize(el) {
@@ -57,7 +63,7 @@ export const SizeWrapper = ({ children, onSizeChange, ...props }) => {
 
   useEffect(() => {
     if (typeof onSizeChange === "function") {
-      onSizeChange(size);
+      onSizeChange(componentSize);
     }
   }, [componentSize]);
 

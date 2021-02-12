@@ -12,12 +12,12 @@ export const meta = {
 
 import { Box } from "./src/components/Box.js";
 import { useState, useRef, useCallback, useEffect } from "react";
-import { useComponentSize } from "@talves/use-component-size";
+import { useComponentSize, SizeWrapper } from "@talves/use-component-size";
 import { usePrevious } from "@talves/use-previous";
 function sizeEqual(a, b) {
   return JSON.stringify(a) === JSON.stringify(b);
 }
-export const SizeWrapper = ({ children, onSizeChange, ...props }) => {
+export const CustomSizeWrapper = ({ children, onSizeChange, ...props }) => {
   const wrapperRef = useRef(null);
   const componentSize = useComponentSize(wrapperRef); // A custom Hook
   const previousSize = usePrevious(componentSize);
@@ -47,6 +47,7 @@ export const SizeWrapper = ({ children, onSizeChange, ...props }) => {
 
 export const SizedComponent = () => {
   const [value, setValue] = useState({});
+  console.log("value:", value);
   return (
     <div class="flex flex-col border-gray-400 border-2 p-2 m-5">
       <SizeWrapper
@@ -55,6 +56,21 @@ export const SizedComponent = () => {
       >
         {"This is some example text"}
       </SizeWrapper>
+      <pre>{`${JSON.stringify(value, null, 2)}`}</pre>
+    </div>
+  );
+};
+
+export const CustomSizedComponent = () => {
+  const [value, setValue] = useState({});
+  return (
+    <div class="flex flex-col border-gray-400 border-2 p-2 m-5">
+      <CustomSizeWrapper
+        class="text-xl border-secondary-300 border-2 p-6"
+        onSizeChange={(size) => setValue(size)}
+      >
+        {"Text for our custom size component wrapper"}
+      </CustomSizeWrapper>
       <pre>{`${JSON.stringify(value, null, 2)}`}</pre>
     </div>
   );
@@ -71,12 +87,44 @@ export const SizedComponent = () => {
 
 ```js
 import { useRef, useCallback, useEffect } from "react";
+import { useComponentSize, SizeWrapper } from "@talves/use-component-size";
+
+export const SizedComponent = () => {
+  const [value, setValue] = useState({});
+  return (
+    <div class="flex flex-col border-gray-400 border-2 p-2 m-5">
+      <SizeWrapper
+        class="border-secondary-300 border-2 p-2 m-5"
+        onSizeChange={(size) => setValue(size)}
+      >
+        {"This is some example text"}
+      </SizeWrapper>
+      <pre>{`${JSON.stringify(value, null, 2)}`}</pre>
+    </div>
+  );
+};
+```
+
+### Create a custom wrapper
+
+<CustomSizedComponent class="flex flex-col border-gray-400 border-2 p-3 m-5">
+  {"This is text"}
+</CustomSizedComponent>
+
+#### Code for example above
+
+Creating and using your own size wrapper:
+
+```js
+import { useState, useRef, useCallback, useEffect } from "react";
 import { useComponentSize } from "@talves/use-component-size";
 import { usePrevious } from "@talves/use-previous";
+
 function sizeEqual(a, b) {
   return JSON.stringify(a) === JSON.stringify(b);
 }
-export const SizeWrapper = ({ children, onSizeChange, ...props }) => {
+
+export const CustomSizeWrapper = ({ children, onSizeChange, ...props }) => {
   const wrapperRef = useRef(null);
   const componentSize = useComponentSize(wrapperRef); // A custom Hook
   const previousSize = usePrevious(componentSize);
@@ -104,16 +152,17 @@ export const SizeWrapper = ({ children, onSizeChange, ...props }) => {
   );
 };
 
-export const SizedComponent = () => {
+export const CustomSizedComponent = () => {
   const [value, setValue] = useState({});
+  console.log("value:", value);
   return (
     <div class="flex flex-col border-gray-400 border-2 p-2 m-5">
-      <SizeWrapper
-        class="border-secondary-300 border-2 p-2 m-5"
+      <CustomSizeWrapper
+        class="text-xl border-secondary-300 border-2 p-5"
         onSizeChange={(size) => setValue(size)}
       >
         {"This is some example text"}
-      </SizeWrapper>
+      </CustomSizeWrapper>
       <pre>{`${JSON.stringify(value, null, 2)}`}</pre>
     </div>
   );
