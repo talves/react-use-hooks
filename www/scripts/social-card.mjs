@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import https from "https";
 import { processMdx } from "@toastdotdev/mdx";
+import imgmin from "netlify-plugin-image-optim";
 import { buildUri } from "../../netlify/functions/og-create.js";
 import minimist from "minimist";
 
@@ -136,14 +137,20 @@ async function processDir(dirpath) {
 }
 
 function processFiles() {
-  fs.stat(inputPath, function (err, stats) {
+  fs.stat(inputPath, async function (err, stats) {
     console.log(stats.isDirectory());
     if (stats.isDirectory()) {
-      processDir(inputPath);
+      await processDir(inputPath);
     } else if (stats.isFile()) {
-      if (isValidExtension(inputPath)) processFile(inputPath);
+      if (isValidExtension(inputPath)) await processFile(inputPath);
     }
   });
 }
 
-if (inputExists && outputExists) processFiles(inputPath);
+if (inputExists && outputExists) {
+  processFiles(inputPath);
+  imgmin
+    .onPostBuild({ constants: { PUBLISH_DIR: outputPath } })
+    .then(() => console.log("Image Optimization Complete!"))
+    .catch((e) => console.log(e));
+}
