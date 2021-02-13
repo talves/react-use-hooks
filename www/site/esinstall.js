@@ -1,17 +1,18 @@
 export const specs = [
+  "@mdx-js/preact",
   "@talves/use-component-size",
   "@talves/use-previous",
   "@talves/use-web-storage",
   "preact",
+  "preact/compat",
   "preact/hooks",
-  "@mdx-js/preact",
+  "query-string",
   "react-helmet",
-  "preact/compat"
   //   "gsap"
 ];
 
 export const options = {
   alias: {
-    react: "preact/compat"
-  }
+    react: "preact/compat",
+  },
 };
