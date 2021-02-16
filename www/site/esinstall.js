@@ -5,14 +5,15 @@ export const specs = [
   "@talves/use-web-storage",
   "preact",
   "preact/compat",
+  "preact/jsx-runtime",
   "preact/hooks",
   "query-string",
   "react-helmet",
-  //   "gsap"
 ];
 
 export const options = {
   alias: {
     react: "preact/compat",
+    "react/jsx-runtime": "preact/jsx-runtime",
   },
 };

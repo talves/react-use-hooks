@@ -39,24 +39,5 @@
     "postcss-cli": "^8.3.1",
     "postcss-import": "^14.0.0",
     "query-string": "^6.13.8"
-  },
-  "snowpack": {
-    "exclude": [
-      "gulpfile.js",
-      "public/**/*",
-      "toast.js"
-    ],
-    "installOptions": {
-      "alias": {
-        "react": "preact/compat"
-      }
-    },
-    "knownEntrypoints": [
-      "@talves/use-component-size",
-      "@talves/use-previous",
-      "@talves/use-web-storage",
-      "preact/hooks",
-      "preact"
-    ]
   }
 }
