@@ -1,5 +1,11 @@
 # @talves/use-component-size
 
+## 0.2.1
+
+### Patch Changes
+
+- bdd4667: fix: use jsx runtime (automatic)
+
 ## 0.2.0
 
 ### Minor Changes
