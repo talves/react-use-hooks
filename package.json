@@ -9,7 +9,9 @@
   "author": "talves <tony@3alves.com> (@talves)",
   "license": "MIT",
   "dependencies": {
-    "@changesets/cli": "^2.13.1"
+    "@changesets/cli": "^2.13.1",
+    "patch-package": "^6.2.2",
+    "postinstall-postinstall": "^2.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
@@ -35,6 +37,7 @@
     "tailwindcss": "^2.0.2"
   },
   "scripts": {
+    "postinstall": "patch-package",
     "prettier:all": "yarn prettier --write .",
     "build:site": "yarn workspace site build",
     "build:all": "yarn workspaces run build",
