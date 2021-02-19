@@ -3,12 +3,15 @@
   "version": "0.6.0",
   "description": "React hook (useWebStorage)",
   "source": "src/index.js",
-  "main": "./dist/use-web-storage.js",
+  "main": "./dist/lib/use-web-storage.js",
+  "module": "./dist/lib/use-web-storage.esm.js",
+  "unpkg": "./dist/lib/use-web-storage.umd.js",
   "exports": {
-    "import": "./dist/use-web-storage.modern.js",
-    "require": "./dist/use-web-storage.js"
+    ".": {
+      "default": "./lib/index.mjs",
+      "require": "./dist/lib/use-web-storage.js"
+    }
   },
-  "type": "module",
   "author": "talves <tony@3alves.com> (@talves)",
   "license": "MIT",
   "files": [
@@ -31,9 +34,9 @@
   },
   "scripts": {
     "clean": "rm -rf dist",
-    "build:lib": "microbundle src/index.js -o dist --no-compress --no-sourcemap",
-    "watch": "microbundle src/index.js -o dist --watch --no-compress --no-sourcemap",
-    "build": "yarn clean && yarn build:lib",
+    "build:dist": "microbundle lib/index.mjs -o dist/lib -f cjs,esm,umd --no-compress --no-sourcemap",
+    "watch": "microbundle lib/index.mjs -o dist/lib -f cjs,esm,umd --watch --no-compress --no-sourcemap",
+    "build": "yarn clean && yarn build:dist",
     "dev": "yarn build:dev",
     "format": "prettier --write \"src/**/*.js\""
   },
