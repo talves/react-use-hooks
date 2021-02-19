@@ -1,5 +1,11 @@
 # @talves/use-component-size
 
+## 0.3.0
+
+### Minor Changes
+
+- b54f7ec: ES Modules
+
 ## 0.2.1
 
 ### Patch Changes
