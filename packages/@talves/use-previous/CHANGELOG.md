@@ -1,5 +1,11 @@
 # @talves/use-previous
 
+## 0.7.0
+
+### Minor Changes
+
+- b136052: ES Modules
+
 ## 0.6.0
 
 ### Minor Changes
