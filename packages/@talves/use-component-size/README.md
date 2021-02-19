@@ -27,8 +27,8 @@ yarn add @talves/use-component-size
 // Creates a component that runs onSizeChange of the component
 // only when the component size changed, give current and previous
 import { useRef, useCallback, useEffect } from "react";
-import useComponentSize from "@talves/use-component-size";
-import usePrevious from "@talves/use-previous";
+import { useComponentSize } from "@talves/use-component-size";
+import { usePrevious } from "@talves/use-previous";
 
 function sizeEqual(a, b) {
   return JSON.stringify(a) === JSON.stringify(b);

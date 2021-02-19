@@ -2,18 +2,20 @@
   "name": "@talves/use-component-size",
   "version": "0.2.1",
   "description": "React hook (useComponentSize)",
-  "source": "src/index.js",
-  "main": "./dist/use-component-size.js",
+  "main": "./dist/lib/use-component-size.js",
+  "module": "./dist/lib/use-component-size.esm.js",
+  "unpkg": "./dist/lib/use-component-size.umd.js",
   "exports": {
-    "import": "./dist/use-component-size.modern.js",
-    "require": "./dist/use-component-size.js"
+    ".": {
+      "default": "./lib/index.mjs",
+      "require": "./dist/lib/use-component-size.js"
+    }
   },
-  "type": "module",
   "author": "talves <tony@3alves.com> (@talves)",
   "license": "MIT",
   "files": [
     "/dist",
-    "/src",
+    "/lib",
     "README.md"
   ],
   "repository": {
@@ -22,9 +24,10 @@
   },
   "scripts": {
     "clean": "rm -rf dist",
-    "build:lib": "microbundle src/index.js -o dist --jsx jsx --jsxImportSource react --globals react/jsx-runtime=jsx --no-compress --no-sourcemap",
-    "watch": "microbundle src/index.js -o dist --watch --jsx jsx --jsxImportSource react --globals react/jsx-runtime=jsx --no-compress --no-sourcemap",
-    "build": "yarn clean && yarn build:lib",
+    "build:jsx": "microbundle lib/index.js -o dist --jsx jsx --jsxImportSource react --globals react/jsx-runtime=jsx --no-compress --no-sourcemap",
+    "build:dist": "microbundle lib/index.mjs -o dist/lib -f cjs,esm,umd --jsx createElement --no-compress --no-sourcemap",
+    "watch": "microbundle lib/index.mjs -o dist/lib -f cjs,esm,umd --watch --jsx createElement --no-compress --no-sourcemap",
+    "build": "yarn clean && yarn build:dist",
     "dev": "yarn build:dev",
     "format": "prettier --write \"src/**/*.js\""
   },

@@ -1,10 +1,4 @@
-import {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-  useLayoutEffect,
-} from "react";
+import { useState, useCallback, useLayoutEffect } from "react";
 import ResizeObserver from "resize-observer-polyfill";
 
 function getSize(el) {
@@ -23,7 +17,7 @@ function getSize(el) {
   return size;
 }
 
-export function useComponentSize(ref) {
+function useComponentSize(ref) {
   const [componentSize, setComponentSize] = useState(
     getSize(ref && ref.current)
   );
@@ -57,19 +51,4 @@ export function useComponentSize(ref) {
   return componentSize;
 }
 
-export const SizeWrapper = ({ children, onSizeChange, ...props }) => {
-  const wrapperRef = useRef(null);
-  const componentSize = useComponentSize(wrapperRef); // A custom Hook
-
-  useEffect(() => {
-    if (typeof onSizeChange === "function") {
-      onSizeChange(componentSize);
-    }
-  }, [componentSize]);
-
-  return (
-    <div ref={wrapperRef} {...props}>
-      {children}
-    </div>
-  );
-};
+export default useComponentSize;
