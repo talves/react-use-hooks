@@ -1,0 +1,51 @@
+{
+  "name": "@talves/use-window-size",
+  "version": "0.0.2",
+  "description": "React hook (useWindowSize)",
+  "main": "./dist/lib/use-window-size.js",
+  "module": "./dist/lib/use-window-size.esm.js",
+  "unpkg": "./dist/lib/use-window-size.umd.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.mjs",
+      "require": "./dist/lib/use-window-size.js"
+    }
+  },
+  "author": "talves <tony@3alves.com> (@talves)",
+  "license": "MIT",
+  "files": [
+    "/dist",
+    "/lib",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/talves/react-use-hooks/packages/@talves/use-window-size"
+  },
+  "dependencies": {
+    "react": "^17.0.1"
+  },
+  "devDependencies": {
+    "microbundle": "^0.13.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.1"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build:dist": "microbundle lib/index.mjs -o dist/lib -f cjs,esm,umd --no-compress --no-sourcemap",
+    "watch": "microbundle lib/index.mjs -o dist/lib -f cjs,esm,umd --watch --no-compress --no-sourcemap",
+    "build": "yarn clean && yarn build:dist",
+    "dev": "yarn build:dev",
+    "format": "prettier --write \"src/**/*.js\""
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Opera versions",
+    "last 2 Firefox versions",
+    "last 2 Edge versions",
+    "last 2 Safari versions",
+    "last 2 iOS versions",
+    "last 2 ChromeAndroid versions"
+  ]
+}
