@@ -1,6 +1,6 @@
 {
   "name": "@talves/use-window-size",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "React hook (useWindowSize)",
   "main": "./dist/lib/use-window-size.js",
   "module": "./dist/lib/use-window-size.esm.js",
