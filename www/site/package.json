@@ -20,6 +20,7 @@
     "@talves/use-component-size": "*",
     "@talves/use-previous": "*",
     "@talves/use-web-storage": "*",
+    "@talves/use-window-size": "*",
     "@toastdotdev/mdx": "^0.1.5",
     "autoprefixer": "10.2.3",
     "console.table": "^0.10.0",

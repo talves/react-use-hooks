@@ -1,0 +1,50 @@
+export const meta = {
+  draft: false,
+  title: "useWindowSize",
+  slug: "/use-window-size",
+  date: "2020-02-20T10:30:00.000Z",
+  update: "2020-02-20T10:30:00.000Z",
+  description:
+    "useWindowSize keeps track of the window sizing height, width in the browser.",
+  keywords: ["react", "react-hooks"],
+  image: "/images/social/use-window-size.png",
+};
+
+import { Box } from "./src/components/Box.js";
+import { useWindowSize } from "@talves/use-window-size";
+export const Example = (props) => {
+  const value = useWindowSize();
+  return (
+    <Box class={props.class}>
+      <Box class="form-input" as="h2">
+        Window Size
+      </Box>
+      <h3>{`Height: ${value.height}`}</h3>
+      <h3>{`Width: ${value.width}`}</h3>
+    </Box>
+  );
+};
+
+# {meta.title}
+
+<p>{meta.description}</p>
+
+<Example class="flex flex-col border-gray-400 border-2 p-2 m-5" />
+
+#### Code for example above
+
+```js
+import { useWindowSize } from "@talves/use-window-size";
+export const Example = (props) => {
+  const value = useWindowSize();
+  return (
+    <Box class={props.class}>
+      <Box class="form-input" as="h2">
+        Window Size
+      </Box>
+      <h3>{`Height: ${value.height}`}</h3>
+      <h3>{`Width: ${value.width}`}</h3>
+    </Box>
+  );
+};
+```
