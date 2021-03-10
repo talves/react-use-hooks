@@ -1,5 +1,11 @@
 # @talves/use-component-size
 
+## 0.3.1
+
+### Patch Changes
+
+- 3c4fe09: Fix order of the exports.default
+
 ## 0.3.0
 
 ### Minor Changes
