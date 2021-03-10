@@ -1,5 +1,11 @@
 # @talves/use-web-storage
 
+## 0.7.1
+
+### Patch Changes
+
+- 3c4fe09: Fix order of the exports.default
+
 ## 0.7.0
 
 ### Minor Changes

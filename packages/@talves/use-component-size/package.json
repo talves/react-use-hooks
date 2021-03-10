@@ -1,6 +1,6 @@
 {
   "name": "@talves/use-component-size",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "React hook (useComponentSize)",
   "main": "./dist/lib/use-component-size.js",
   "module": "./dist/lib/use-component-size.esm.js",
