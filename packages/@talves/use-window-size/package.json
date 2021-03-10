@@ -7,8 +7,8 @@
   "unpkg": "./dist/lib/use-window-size.umd.js",
   "exports": {
     ".": {
-      "default": "./lib/index.mjs",
-      "require": "./dist/lib/use-window-size.js"
+      "require": "./dist/lib/use-window-size.js",
+      "default": "./lib/index.mjs"
     }
   },
   "author": "talves <tony@3alves.com> (@talves)",

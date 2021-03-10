@@ -8,8 +8,8 @@
   "unpkg": "./dist/lib/use-web-storage.umd.js",
   "exports": {
     ".": {
-      "default": "./lib/index.mjs",
-      "require": "./dist/lib/use-web-storage.js"
+      "require": "./dist/lib/use-web-storage.js",
+      "default": "./lib/index.mjs"
     }
   },
   "author": "talves <tony@3alves.com> (@talves)",
