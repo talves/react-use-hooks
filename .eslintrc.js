@@ -24,5 +24,6 @@ module.exports = {
     "no-duplicate-imports": "error",
     quotes: ["error", "single"],
     semi: ["error", "never"],
+    avoidEscape: true,
   },
 };
