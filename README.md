@@ -15,3 +15,9 @@ React hooks on the @talves published scope. Some opinionated, some not.
 [prettier]: https://prettier.io/docs/en/install.html
 [lint-staged]: https://github.com/okonet/lint-staged
 [actions]: https://docs.github.com/en/actions
+
+## Added NX to workflow
+
+```sh
+NX_BRANCH=nx yarn nx run site:build:all
+```
