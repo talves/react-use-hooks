@@ -27,7 +27,7 @@
     "esinstall": "^1.0.5",
     "preact": "^10.5.12",
     "pretty-bytes": "^5.5.0",
-    "toast": "^0.3.42"
+    "toast": "^0.3.47"
   },
   "devDependencies": {
     "browser-sync": "^2.26.13",

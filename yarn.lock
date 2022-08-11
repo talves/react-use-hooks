@@ -12239,10 +12239,10 @@ to-through@^2.0.0:
   dependencies:
     through2 "^2.0.3"
 
-toast@^0.3.42:
-  version "0.3.42"
-  resolved "https://registry.yarnpkg.com/toast/-/toast-0.3.42.tgz#7ee22e2b9efb3c3fa14a23bdbe73e7778ca5356d"
-  integrity sha512-Kx2++1BHjhrM44/FHpc2b238H5kCSJKWB7UDOhWDbYPonXKQO8oMke5lgv1ozi/gcYdddtnoAEDq1mN3VdgL/A==
+toast@^0.3.47:
+  version "0.3.47"
+  resolved "https://registry.npmjs.org/toast/-/toast-0.3.47.tgz#94adf251fb7eec745945f56479461bc5a1924d24"
+  integrity sha512-iC71U7Frq2AXMhu6mT0yZPE0pz2vETLY6aPWW6SdiLy7E97V/VZ24g4EqqjnsK9+uyafCosV+K9RdjmMhtd7Lw==
   dependencies:
     "@mdx-js/preact" "2.0.0-next.8"
     "@svgr/cli" "^5.4.0"

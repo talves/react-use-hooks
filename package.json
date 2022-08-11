@@ -39,7 +39,7 @@
     "@nrwl/nx-cloud": "latest"
   },
   "scripts": {
-    "postinstall": "patch-package",
+    "deprecated-postinstall": "patch-package",
     "prettier:all": "yarn prettier --write .",
     "build:site": "yarn workspace site build",
     "build:all": "yarn workspaces run build",
