@@ -27,7 +27,7 @@
     "react": "^17.0.1"
   },
   "devDependencies": {
-    "microbundle": "^0.13.0"
+    "microbundle": "^0.15.0"
   },
   "peerDependencies": {
     "react": "^17.0.1"
